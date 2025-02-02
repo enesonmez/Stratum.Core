@@ -8,9 +8,12 @@
 
     <ItemGroup>
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.1" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.1" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.1" />
-      <PackageReference Include="System.Linq.Dynamic.Core" Version="1.6.0.1" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.1" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Core.Persistence\Core.Persistence.csproj" />
     </ItemGroup>
 
 </Project>

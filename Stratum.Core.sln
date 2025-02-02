@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Persistence", "src\Core.Persistence\Core.Persistence.csproj", "{5445F2DB-7ABC-4252-9FDD-60AB63ACAE0C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Persistence.DI", "src\Core.Persistence.DI\Core.Persistence.DI.csproj", "{BC45E690-459E-432D-A60C-BCA678A23E91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Persistence.WebApi", "src\Core.Persistence.WebApi\Core.Persistence.WebApi.csproj", "{2797D9F4-BDE6-465D-B0C3-DA60AE3245EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{5445F2DB-7ABC-4252-9FDD-60AB63ACAE0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5445F2DB-7ABC-4252-9FDD-60AB63ACAE0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5445F2DB-7ABC-4252-9FDD-60AB63ACAE0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC45E690-459E-432D-A60C-BCA678A23E91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC45E690-459E-432D-A60C-BCA678A23E91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC45E690-459E-432D-A60C-BCA678A23E91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC45E690-459E-432D-A60C-BCA678A23E91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2797D9F4-BDE6-465D-B0C3-DA60AE3245EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2797D9F4-BDE6-465D-B0C3-DA60AE3245EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2797D9F4-BDE6-465D-B0C3-DA60AE3245EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2797D9F4-BDE6-465D-B0C3-DA60AE3245EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
