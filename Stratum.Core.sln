@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.CrossCuttingConcerns.E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.CrossCuttingConcerns.Exception.WebApi", "src\Core.CrossCuttingConcerns.Exception.WebApi\Core.CrossCuttingConcerns.Exception.WebApi.csproj", "{2C4C6166-CBA5-46F8-B3EF-987DE7222A31}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.CrossCuttingConcerns.Logging", "src\Core.CrossCuttingConcerns.Logging\Core.CrossCuttingConcerns.Logging.csproj", "{CFF83300-B471-4760-B777-CB3428CDD0EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,5 +74,9 @@ Global
 		{2C4C6166-CBA5-46F8-B3EF-987DE7222A31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C4C6166-CBA5-46F8-B3EF-987DE7222A31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C4C6166-CBA5-46F8-B3EF-987DE7222A31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFF83300-B471-4760-B777-CB3428CDD0EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFF83300-B471-4760-B777-CB3428CDD0EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFF83300-B471-4760-B777-CB3428CDD0EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFF83300-B471-4760-B777-CB3428CDD0EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
