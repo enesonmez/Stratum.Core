@@ -9,7 +9,7 @@
     <ItemGroup>
       <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
       <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.3.0" />
-      <PackageReference Include="Microsoft.Net.Http.Headers" Version="2.3.0" />
+      <PackageReference Include="Microsoft.Net.Http.Headers" Version="9.0.1" />
     </ItemGroup>
 
     <ItemGroup>

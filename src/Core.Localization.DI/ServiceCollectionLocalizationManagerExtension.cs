@@ -18,15 +18,16 @@ public static class ServiceCollectionLocalizationManagerExtension
     ///    </item>
     /// </list>
     /// </summary>
-    public static IServiceCollection AddFileLocalization(this IServiceCollection services)
+    public static IServiceCollection AddFileLocalization(this IServiceCollection services, Assembly assembly)
     {
-        services.AddScoped<ILocalizationService, FileLocalizationManager>(_ =>
+        services.AddSingleton<ILocalizationService, FileLocalizationManager>(_ =>
         {
             // <locale, <featureName, resourceDir>>
             Dictionary<string, Dictionary<string, string>> resources = [];
-
+            
+            string projectPath = Directory.GetParent(Path.GetDirectoryName(assembly.Location)!)!.Parent!.Parent!.Parent!.ToString();
             string[] featureDirs = Directory.GetDirectories(
-                Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!, "Features")
+                Path.Combine(projectPath, "Application", "Features")
             );
             foreach (string featureDir in featureDirs)
             {
