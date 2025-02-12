@@ -1,5 +1,6 @@
 using System.Reflection;
 using Core.Localization.Abstraction;
+using Core.Localization.DB.Services;
 using Core.Localization.File;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -55,6 +56,13 @@ public static class ServiceCollectionLocalizationManagerExtension
             return new FileLocalizationManager(resources);
         });
 
+        return services;
+    }
+
+    public static IServiceCollection AddDbLocalization(this IServiceCollection services)
+    {
+        services.AddScoped<ILocalizationService, DbLocalizationManager>();
+        
         return services;
     }
 }

@@ -24,6 +24,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.CrossCuttingConcerns.E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.CrossCuttingConcerns.Logging", "src\Core.CrossCuttingConcerns.Logging\Core.CrossCuttingConcerns.Logging.csproj", "{CFF83300-B471-4760-B777-CB3428CDD0EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Constants", "src\Core.Constants\Core.Constants.csproj", "{9F2A8883-8661-4978-8300-87D481FAE6A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Localization.DB", "src\Core.Localization.DB\Core.Localization.DB.csproj", "{9B09181B-A952-4EAD-A5B5-B3E457CF5E8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,5 +82,13 @@ Global
 		{CFF83300-B471-4760-B777-CB3428CDD0EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFF83300-B471-4760-B777-CB3428CDD0EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFF83300-B471-4760-B777-CB3428CDD0EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F2A8883-8661-4978-8300-87D481FAE6A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F2A8883-8661-4978-8300-87D481FAE6A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F2A8883-8661-4978-8300-87D481FAE6A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F2A8883-8661-4978-8300-87D481FAE6A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B09181B-A952-4EAD-A5B5-B3E457CF5E8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B09181B-A952-4EAD-A5B5-B3E457CF5E8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B09181B-A952-4EAD-A5B5-B3E457CF5E8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B09181B-A952-4EAD-A5B5-B3E457CF5E8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
