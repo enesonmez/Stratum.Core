@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Query;
 
 namespace Core.Persistence.Repositories;
 
-public interface IAsyncRepository<TEntity, TEntityId> : IQuery<TEntity>
+public interface IAsyncReadRepository<TEntity, TEntityId> : IQuery<TEntity>
     where TEntity : Entity<TEntityId>
 {
     Task<TEntity?> GetAsync(
@@ -42,22 +42,6 @@ public interface IAsyncRepository<TEntity, TEntityId> : IQuery<TEntity>
         Expression<Func<TEntity, bool>>? predicate = null,
         Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
         bool withDeleted = false,
-        CancellationToken cancellationToken = default
-    );
-
-    Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken = default);
-
-    Task<ICollection<TEntity>> AddRangeAsync(ICollection<TEntity> entities, CancellationToken cancellationToken = default);
-
-    Task<TEntity> UpdateAsync(TEntity entity, CancellationToken cancellationToken = default);
-
-    Task<ICollection<TEntity>> UpdateRangeAsync(ICollection<TEntity> entities, CancellationToken cancellationToken = default);
-
-    Task<TEntity> DeleteAsync(TEntity entity, bool permanent = false, CancellationToken cancellationToken = default);
-
-    Task<ICollection<TEntity>> DeleteRangeAsync(
-        ICollection<TEntity> entities,
-        bool permanent = false,
         CancellationToken cancellationToken = default
     );
 }
