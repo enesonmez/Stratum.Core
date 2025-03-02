@@ -1,6 +1,6 @@
 ﻿namespace Core.Constants;
 
-public static class CommonContants
+public static class CommonConstants
 {
     public const string UnderScoreString = "_";
     public const string DotString = ".";
