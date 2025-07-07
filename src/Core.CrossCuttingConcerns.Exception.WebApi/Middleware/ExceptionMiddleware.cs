@@ -51,7 +51,7 @@ public class ExceptionMiddleware
             new()
             {
                 ExceptionMessage = exception.ToString(),
-                MethodName = _next.Method.Name,
+                MethodName = context.Request.GetType().Name,
                 Parameters = logParameters,
                 User = _contextAccessor.HttpContext?.User.Identity?.Name ?? "?"
             };

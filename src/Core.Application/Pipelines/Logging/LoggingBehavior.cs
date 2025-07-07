@@ -35,7 +35,7 @@ public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, 
         LogDetail logDetail =
             new()
             {
-                MethodName = next.Method.Name,
+                MethodName = typeof(TRequest).Name,
                 Parameters = logParameters,
                 User = _httpContextAccessor.HttpContext.User.Identity?.Name ?? "?"
             };
