@@ -28,8 +28,8 @@ public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, 
 
         List<LogParameter> logParameters =
         [
-            new LogParameter { Type = request.GetType().Name, Value = request },
-            new LogParameter { Type = response?.GetType().Name ?? "", Value = response ?? new object() }
+            new() { Type = request.GetType().Name, Value = request },
+            new() { Type = response?.GetType().Name ?? "", Value = response ?? new object() }
         ];
 
         LogDetail logDetail =
