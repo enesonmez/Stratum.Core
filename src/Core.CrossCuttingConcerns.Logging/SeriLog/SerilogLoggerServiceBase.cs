@@ -1,4 +1,5 @@
 using Core.CrossCuttingConcerns.Logging.Abstraction;
+using Serilog.Context;
 using PackageSerilog = Serilog;
 
 namespace Core.CrossCuttingConcerns.Logging.SeriLog;
@@ -6,12 +7,12 @@ namespace Core.CrossCuttingConcerns.Logging.SeriLog;
 public class SerilogLoggerServiceBase : ILogger
 {
     protected PackageSerilog.ILogger? Logger { get; set; }
-    
+
     protected SerilogLoggerServiceBase(PackageSerilog.ILogger logger)
     {
         Logger = logger;
     }
-    
+
     public void Trace(string message)
     {
         Logger?.Verbose(message);
@@ -22,9 +23,12 @@ public class SerilogLoggerServiceBase : ILogger
         Logger?.Fatal(message);
     }
 
-    public void Information(string message)
+    public void Information(string message, string propertyName = "")
     {
-        Logger?.Information(message);
+        using (LogContext.PushProperty(propertyName, null))
+        {
+            Logger?.Information(message);
+        }
     }
 
     public void Warning(string message)

@@ -19,4 +19,8 @@
       <PackageReference Include="Serilog.Sinks.RabbitMQ" Version="8.0.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Core.Constants\Core.Constants.csproj" />
+    </ItemGroup>
+
 </Project>
