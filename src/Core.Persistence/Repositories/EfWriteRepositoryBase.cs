@@ -27,7 +27,6 @@ public class EfWriteRepositoryBase<TEntity, TEntityId, TContext>(TContext contex
     {
         EditEntityPropertiesToAdd(entity);
         await _context.AddAsync(entity, cancellationToken);
-        await _context.SaveChangesAsync(cancellationToken);
         return entity;
     }
 
@@ -39,7 +38,6 @@ public class EfWriteRepositoryBase<TEntity, TEntityId, TContext>(TContext contex
         foreach (TEntity entity in entities)
             EditEntityPropertiesToAdd(entity);
         await _context.AddRangeAsync(entities, cancellationToken);
-        await _context.SaveChangesAsync(cancellationToken);
         return entities;
     }
 
@@ -48,15 +46,14 @@ public class EfWriteRepositoryBase<TEntity, TEntityId, TContext>(TContext contex
         entity.UpdatedDate = DateTime.UtcNow;
     }
 
-    public async Task<TEntity> UpdateAsync(TEntity entity, CancellationToken cancellationToken = default)
+    public Task<TEntity> UpdateAsync(TEntity entity, CancellationToken cancellationToken = default)
     {
         EditEntityPropertiesToUpdate(entity);
         _context.Update(entity);
-        await _context.SaveChangesAsync(cancellationToken);
-        return entity;
+        return Task.FromResult(entity);
     }
 
-    public async Task<ICollection<TEntity>> UpdateRangeAsync(
+    public Task<ICollection<TEntity>> UpdateRangeAsync(
         ICollection<TEntity> entities,
         CancellationToken cancellationToken = default
     )
@@ -64,15 +61,13 @@ public class EfWriteRepositoryBase<TEntity, TEntityId, TContext>(TContext contex
         foreach (TEntity entity in entities)
             EditEntityPropertiesToUpdate(entity);
         _context.UpdateRange(entities);
-        await _context.SaveChangesAsync(cancellationToken);
-        return entities;
+        return Task.FromResult(entities);
     }
 
     public async Task<TEntity> DeleteAsync(TEntity entity, bool permanent = false,
         CancellationToken cancellationToken = default)
     {
         await SetEntityAsDeleted(entity, permanent, isAsync: true, cancellationToken);
-        await _context.SaveChangesAsync(cancellationToken);
         return entity;
     }
 
@@ -83,7 +78,6 @@ public class EfWriteRepositoryBase<TEntity, TEntityId, TContext>(TContext contex
     )
     {
         await SetEntityAsDeleted(entities, permanent, isAsync: true, cancellationToken);
-        await _context.SaveChangesAsync(cancellationToken);
         return entities;
     }
 
@@ -91,7 +85,6 @@ public class EfWriteRepositoryBase<TEntity, TEntityId, TContext>(TContext contex
     {
         EditEntityPropertiesToAdd(entity);
         _context.Add(entity);
-        _context.SaveChanges();
         return entity;
     }
 
@@ -100,7 +93,6 @@ public class EfWriteRepositoryBase<TEntity, TEntityId, TContext>(TContext contex
         foreach (TEntity entity in entities)
             EditEntityPropertiesToAdd(entity);
         _context.AddRange(entities);
-        _context.SaveChanges();
         return entities;
     }
 
@@ -108,7 +100,6 @@ public class EfWriteRepositoryBase<TEntity, TEntityId, TContext>(TContext contex
     {
         EditEntityPropertiesToAdd(entity);
         _context.Update(entity);
-        _context.SaveChanges();
         return entity;
     }
 
@@ -117,21 +108,18 @@ public class EfWriteRepositoryBase<TEntity, TEntityId, TContext>(TContext contex
         foreach (TEntity entity in entities)
             EditEntityPropertiesToAdd(entity);
         _context.UpdateRange(entities);
-        _context.SaveChanges();
         return entities;
     }
 
     public TEntity Delete(TEntity entity, bool permanent = false)
     {
         SetEntityAsDeleted(entity, permanent, isAsync: false).Wait();
-        _context.SaveChanges();
         return entity;
     }
 
     public ICollection<TEntity> DeleteRange(ICollection<TEntity> entities, bool permanent = false)
     {
         SetEntityAsDeleted(entities, permanent, isAsync: false).Wait();
-        _context.SaveChanges();
         return entities;
     }
 
