@@ -4,6 +4,7 @@ using Core.CrossCuttingConcerns.Logging.Abstraction;
 using Core.CrossCuttingConcerns.Logging.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Http;
+using Serilog.Context;
 
 namespace Core.Application.Pipelines.Logging;
 
@@ -39,8 +40,12 @@ public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, 
                 Parameters = logParameters,
                 User = _httpContextAccessor.HttpContext.User.Identity?.Name ?? "?"
             };
-
-        _logger.Information(JsonSerializer.Serialize(logDetail), nameof(LogType.Request));
+        
+        using (LogContext.PushProperty(nameof(LogType.Request), null))
+        {
+            _logger.Information(JsonSerializer.Serialize(logDetail));
+        }
+        
 
         return response;
     }
