@@ -53,4 +53,9 @@ public class SeriLogLogger : ILogger
     {
         Logger?.Error(message);
     }
+
+    public IDisposable? PushProperty(string key, object? value)
+    {
+        return LogContext.PushProperty(key, value);
+    }
 }

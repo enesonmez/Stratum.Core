@@ -8,4 +8,5 @@ public interface ILogger
     public void Warning(string message);
     public void Debug(string message);
     public void Error(string message);
+    IDisposable? PushProperty(string key, object? value);
 }

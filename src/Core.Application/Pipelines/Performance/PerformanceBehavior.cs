@@ -2,7 +2,6 @@ using System.Diagnostics;
 using Core.CrossCuttingConcerns.Logging.Abstraction;
 using Core.CrossCuttingConcerns.Logging.Enums;
 using MediatR;
-using Serilog.Context;
 
 namespace Core.Application.Pipelines.Performance;
 
@@ -35,7 +34,7 @@ public class PerformanceBehavior<TRequest, TResponse> : IPipelineBehavior<TReque
             {
                 string message = $"Performance -> {requestName} {_stopwatch.Elapsed.TotalMilliseconds} ms";
 
-                using (LogContext.PushProperty(nameof(LogType.Performance), null))
+                using (_logger.PushProperty(nameof(LogType.Performance), null))
                 {
                     _logger.Information(message);
                 }

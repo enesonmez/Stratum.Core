@@ -1,11 +1,9 @@
 using System.Transactions;
 using Core.Persistence.UnitOfWork;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Core.Application.Pipelines.Transaction;
-
 
 public class TransactionScopeBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IRequest<TResponse>, ITransactionalRequest
@@ -16,7 +14,7 @@ public class TransactionScopeBehavior<TRequest, TResponse> : IPipelineBehavior<T
     {
         _serviceProvider = serviceProvider;
     }
-    
+
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next,
         CancellationToken cancellationToken)
     {
@@ -27,10 +25,10 @@ public class TransactionScopeBehavior<TRequest, TResponse> : IPipelineBehavior<T
         try
         {
             response = await next();
-            
+
             foreach (var unitOfWork in unitOfWorks)
                 await unitOfWork.SaveChangesAsync(cancellationToken);
-            
+
             transactionScope.Complete();
         }
         catch (Exception)
@@ -38,7 +36,7 @@ public class TransactionScopeBehavior<TRequest, TResponse> : IPipelineBehavior<T
             transactionScope.Dispose();
             throw;
         }
-        
+
         return response;
     }
 }
