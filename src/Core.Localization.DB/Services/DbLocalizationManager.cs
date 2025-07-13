@@ -21,9 +21,9 @@ public class DbLocalizationManager : ILocalizationService
         return GetLocalizedAsync(key, AcceptLocales ?? throw new NoNullAllowedException(nameof(AcceptLocales)), keySection);
     }
 
-    public Task<string> GetLocalizedAsync(string key, ICollection<string> acceptLocales, string? keySection = null)
+    public async Task<string> GetLocalizedAsync(string key, ICollection<string> acceptLocales, string? keySection = null)
     {
-       Resource? resource = _resourceReadRepository.Get(x => x.Key == key, x => x.Include(a => a.ResourceTranslations));
+       Resource? resource = await _resourceReadRepository.GetResourceWithTranslationAsync(x => x.Key == key, enableTracking: false);
 
        if (resource != null)
        {
@@ -31,10 +31,10 @@ public class DbLocalizationManager : ILocalizationService
            {
                ResourceTranslation? translation = resource.ResourceTranslations.FirstOrDefault(x => x.CultureCode == locale);
                if (translation != null)
-                   return Task.FromResult(translation.Value);
+                   return translation.Value;
            }
        }
 
-       return Task.FromResult(key);
+       return key;
     }
 }
