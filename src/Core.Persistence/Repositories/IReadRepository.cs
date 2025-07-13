@@ -35,7 +35,6 @@ public interface IReadRepository<TEntity, TEntityId> : IQuery<TEntity>
     
     bool Any(
         Expression<Func<TEntity, bool>>? predicate = null,
-        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
         bool withDeleted = false
     );
 }

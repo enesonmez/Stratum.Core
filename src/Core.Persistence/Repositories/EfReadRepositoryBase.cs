@@ -83,7 +83,6 @@ public class EfReadRepositoryBase<TEntity, TEntityId, TContext>(TContext context
     
     public async Task<bool> AnyAsync(
         Expression<Func<TEntity, bool>>? predicate = null,
-        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
         bool withDeleted = false,
         CancellationToken cancellationToken = default
     )
@@ -155,7 +154,6 @@ public class EfReadRepositoryBase<TEntity, TEntityId, TContext>(TContext context
 
     public bool Any(
         Expression<Func<TEntity, bool>>? predicate = null,
-        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
         bool withDeleted = false
     )
     {
