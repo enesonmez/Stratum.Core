@@ -38,6 +38,11 @@ public class SeriLogLogger : ILogger
     {
         Logger?.Information(message);
     }
+    
+    public void Information(string template, params object[] args)
+    {
+        Logger?.Error(template, args);
+    }
 
     public void Warning(string message)
     {
@@ -52,6 +57,11 @@ public class SeriLogLogger : ILogger
     public void Error(string message)
     {
         Logger?.Error(message);
+    }
+    
+    public void Error(string template, params object[] args)
+    {
+        Logger?.Error(template, args);
     }
 
     public IDisposable? PushProperty(string key, object? value)

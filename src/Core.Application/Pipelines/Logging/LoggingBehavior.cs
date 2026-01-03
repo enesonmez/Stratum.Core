@@ -28,8 +28,8 @@ public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, 
 
         List<LogParameter> logParameters =
         [
-            new() { Type = request.GetType().Name, Value = request },
-            new() { Type = response?.GetType().Name ?? "", Value = response ?? new object() }
+            new() { Type = request.GetType().Name, Value = JsonSerializer.Serialize(request) },
+            new() { Type = response?.GetType().Name ?? "", Value = JsonSerializer.Serialize(response ??  new object()) }
         ];
 
         LogDetail logDetail =
@@ -42,7 +42,7 @@ public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, 
 
         using (_logger.PushProperty(nameof(LogType.Request), null))
         {
-            _logger.Information(JsonSerializer.Serialize(logDetail));
+            _logger.Information("{@LogDetail}", logDetail);
         }
 
 

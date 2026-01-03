@@ -3,6 +3,7 @@ using System.Text.Json;
 using Core.CrossCuttingConcerns.Exception.WebApi.Handlers;
 using Core.CrossCuttingConcerns.Logging;
 using Core.CrossCuttingConcerns.Logging.Abstraction;
+using Core.CrossCuttingConcerns.Logging.Enums;
 using Microsoft.AspNetCore.Http;
 
 namespace Core.CrossCuttingConcerns.Exception.WebApi.Middleware;
@@ -26,6 +27,7 @@ public class ExceptionMiddleware
     {
         try
         {
+            context.Request.EnableBuffering(bufferThreshold: 1024 * 30);
             await _next(context);
         }
         catch (System.Exception exception)
@@ -43,10 +45,44 @@ public class ExceptionMiddleware
         return _httpExceptionHandler.HandleException(exception);
     }
     
-    protected virtual Task LogException(HttpContext context, System.Exception exception)
+    protected virtual async Task LogException(HttpContext context, System.Exception exception)
     {
-        List<LogParameter> logParameters = [new LogParameter { Type = context.Request.GetType().Name, Value = context.Request }];
-
+        string requestBody = "Body could not be read.";
+    
+        try 
+        {
+            if (context.Request.ContentLength > 0 && context.Request.Body.CanSeek)
+            {
+                context.Request.Body.Seek(0, SeekOrigin.Begin);
+                using (var reader = new StreamReader(context.Request.Body, leaveOpen: true))
+                {
+                    requestBody = await reader.ReadToEndAsync(); 
+                    context.Request.Body.Seek(0, SeekOrigin.Begin);
+                }
+            }
+        }
+        catch
+        {
+            requestBody = "[Body Read Error]"; 
+        }
+        
+        var loggableRequest = new 
+        {
+            Method = context.Request.Method,
+            Path = context.Request.Path.Value,
+            QueryString = context.Request.QueryString.HasValue ? context.Request.QueryString.Value : null,
+            Body = requestBody
+        };
+        
+        List<LogParameter> logParameters = 
+        [
+            new LogParameter 
+            { 
+                Type = loggableRequest.Path, 
+                Value = JsonSerializer.Serialize(loggableRequest) 
+            }
+        ];
+        
         LogDetailWithException logDetail =
             new()
             {
@@ -56,7 +92,9 @@ public class ExceptionMiddleware
                 User = _contextAccessor.HttpContext?.User.Identity?.Name ?? "?"
             };
 
-        _loggerService.Error(JsonSerializer.Serialize(logDetail));
-        return Task.CompletedTask;
+        using (_loggerService.PushProperty(nameof(LogType.Error), null))
+        {
+            _loggerService.Error("{@LogDetail}", logDetail);
+        }
     }
 }

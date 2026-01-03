@@ -17,6 +17,7 @@
       <ProjectReference Include="..\Core.CrossCuttingConcerns.Logging\Core.CrossCuttingConcerns.Logging.csproj" />
       <ProjectReference Include="..\Core.Localization\Core.Localization.csproj" />
       <ProjectReference Include="..\Core.Persistence\Core.Persistence.csproj" />
+      <ProjectReference Include="..\Core.Security\Core.Security.csproj" />
     </ItemGroup>
 
 </Project>

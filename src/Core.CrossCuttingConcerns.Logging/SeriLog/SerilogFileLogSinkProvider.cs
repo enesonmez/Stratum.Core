@@ -2,6 +2,7 @@ using Core.Constants;
 using Core.CrossCuttingConcerns.Logging.Abstraction;
 using Core.CrossCuttingConcerns.Logging.Configurations;
 using Core.CrossCuttingConcerns.Logging.Enums;
+using Core.CrossCuttingConcerns.Logging.SeriLog.Enricher;
 using Serilog;
 using Serilog.Configuration;
 
@@ -20,6 +21,7 @@ public class SerilogFileLogSinkProvider : ISeriLogSinkProvider
     public LoggerConfiguration Configure(LoggerConfiguration loggerConfig)
     {
         return loggerConfig
+            .Destructure.With(new SensitiveDataDestructuringPolicy())
             .WriteTo.Async(a => a.FileCustom(
                 $"{Directory.GetCurrentDirectory() + _fileConfiguration.FolderPath + nameof(LogType.General) +
                    CommonConstants.DotString + FileExtensions.Txt}"))

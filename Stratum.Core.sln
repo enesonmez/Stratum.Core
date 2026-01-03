@@ -28,6 +28,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Constants", "src\Core.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Localization.DB", "src\Core.Localization.DB\Core.Localization.DB.csproj", "{9B09181B-A952-4EAD-A5B5-B3E457CF5E8F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Security.DI", "src\Core.Security.DI\Core.Security.DI.csproj", "{E51F778F-7FDF-42B7-9B1B-FF860163061D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Security.Swagger", "src\Core.Security.Swagger\Core.Security.Swagger.csproj", "{85C033B1-CC0B-4995-8B4D-ED2D4A20F9E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -90,5 +94,13 @@ Global
 		{9B09181B-A952-4EAD-A5B5-B3E457CF5E8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B09181B-A952-4EAD-A5B5-B3E457CF5E8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B09181B-A952-4EAD-A5B5-B3E457CF5E8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E51F778F-7FDF-42B7-9B1B-FF860163061D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E51F778F-7FDF-42B7-9B1B-FF860163061D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E51F778F-7FDF-42B7-9B1B-FF860163061D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E51F778F-7FDF-42B7-9B1B-FF860163061D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85C033B1-CC0B-4995-8B4D-ED2D4A20F9E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85C033B1-CC0B-4995-8B4D-ED2D4A20F9E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85C033B1-CC0B-4995-8B4D-ED2D4A20F9E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85C033B1-CC0B-4995-8B4D-ED2D4A20F9E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
