@@ -13,4 +13,8 @@
       <PackageReference Include="System.Linq.Dynamic.Core" Version="1.6.0.1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Core.Persistence.Abstractions\Core.Persistence.Abstractions.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -1,11 +1,10 @@
-using System.Collections;
 using System.Linq.Expressions;
-using System.Reflection;
+using Core.Persistence.Abstractions.Dynamic;
+using Core.Persistence.Abstractions.Paging;
+using Core.Persistence.Abstractions.Repositories;
 using Core.Persistence.Dynamic;
 using Core.Persistence.Paging;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Query;
 
 namespace Core.Persistence.Repositories;
 
@@ -61,7 +60,7 @@ public class EfReadRepositoryBase<TEntity, TEntityId, TContext>(TContext context
     public async Task<IPaginate<TEntity>> GetListByDynamicAsync(
         DynamicQuery dynamic,
         Expression<Func<TEntity, bool>>? predicate = null,
-        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
+        Func<IQueryable<TEntity>, IQueryable<TEntity>>? include = null,
         int index = 0,
         int size = 10,
         bool withDeleted = false,
@@ -133,7 +132,7 @@ public class EfReadRepositoryBase<TEntity, TEntityId, TContext>(TContext context
     public IPaginate<TEntity> GetListByDynamic(
         DynamicQuery dynamic,
         Expression<Func<TEntity, bool>>? predicate = null,
-        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
+        Func<IQueryable<TEntity>, IQueryable<TEntity>>? include = null,
         int index = 0,
         int size = 10,
         bool withDeleted = false,

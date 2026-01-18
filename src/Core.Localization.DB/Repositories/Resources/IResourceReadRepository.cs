@@ -1,6 +1,6 @@
 using System.Linq.Expressions;
 using Core.Localization.DB.Entities;
-using Core.Persistence.Repositories;
+using Core.Persistence.Abstractions.Repositories;
 
 namespace Core.Localization.DB.Repositories.Resources;
 

@@ -1,4 +1,4 @@
-namespace Core.Persistence.Repositories;
+namespace Core.Persistence.Abstractions.Repositories;
 
 public interface IWriteRepository<TEntity, TEntityId> : IQuery<TEntity>
     where TEntity : Entity<TEntityId>

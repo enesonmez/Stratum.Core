@@ -19,38 +19,33 @@ public static class ServiceCollectionLocalizationManagerExtension
     ///    </item>
     /// </list>
     /// </summary>
-    public static IServiceCollection AddFileLocalization(this IServiceCollection services, Assembly assembly)
+    public static IServiceCollection AddFileLocalization(this IServiceCollection services)
     {
         services.AddSingleton<ILocalizationService, FileLocalizationManager>(_ =>
         {
             // <locale, <featureName, resourceDir>>
             Dictionary<string, Dictionary<string, string>> resources = [];
             
-            string projectPath = Directory.GetParent(Path.GetDirectoryName(assembly.Location)!)!.Parent!.Parent!.Parent!.ToString();
-            string[] featureDirs = Directory.GetDirectories(
-                Path.Combine(projectPath, "Application", "Features")
-            );
-            foreach (string featureDir in featureDirs)
+            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+            
+            var yamlFiles = Directory.GetFiles(baseDir, "*.yaml", 
+                    SearchOption.AllDirectories).Where(f => f.Contains("Locales")); // Sadece Locales klasöründekiler
+            
+            foreach (string filePath in yamlFiles)
             {
-                string featureName = Path.GetFileName(featureDir);
-                string localeDir = Path.Combine(featureDir, "Resources", "Locales");
-                if (Directory.Exists(localeDir))
-                {
-                    string[] localeFiles = Directory.GetFiles(localeDir);
-                    foreach (string localeFile in localeFiles)
-                    {
-                        string localeName = Path.GetFileNameWithoutExtension(localeFile);
-                        int separatorIndex = localeName.IndexOf('.');
-                        string localeCulture = localeName[(separatorIndex + 1)..];
+                var fileInfo = new FileInfo(filePath);
+                var parts = fileInfo.Name.Split('.');
+            
+                if (parts.Length < 3) continue;
 
-                        if (System.IO.File.Exists(localeFile))
-                        {
-                            if (!resources.ContainsKey(localeCulture))
-                                resources.Add(localeCulture, []);
-                            resources[localeCulture].Add(featureName, localeFile);
-                        }
-                    }
+                string featureName = parts[0]; // users
+                string localeCulture = parts[1]; // tr
+
+                if (!resources.ContainsKey(localeCulture))
+                {
+                    resources.Add(localeCulture, []);
                 }
+                resources[localeCulture].Add(featureName, filePath);
             }
 
             return new FileLocalizationManager(resources);

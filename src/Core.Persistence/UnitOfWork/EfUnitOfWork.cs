@@ -1,3 +1,4 @@
+using Core.Persistence.Abstractions.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 
 namespace Core.Persistence.UnitOfWork;

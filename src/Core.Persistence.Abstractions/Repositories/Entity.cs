@@ -1,4 +1,4 @@
-namespace Core.Persistence.Repositories;
+namespace Core.Persistence.Abstractions.Repositories;
 
 public class Entity<TId>(TId id) : IEntity<TId>, IEntityTimestamps
 {

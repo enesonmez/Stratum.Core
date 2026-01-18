@@ -1,3 +1,4 @@
+using Core.Persistence.Abstractions.Paging;
 using Microsoft.EntityFrameworkCore;
 
 namespace Core.Persistence.Paging;

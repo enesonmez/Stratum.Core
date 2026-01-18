@@ -1,6 +1,4 @@
-using Microsoft.EntityFrameworkCore;
-
-namespace Core.Persistence.UnitOfWork;
+namespace Core.Persistence.Abstractions.UnitOfWork;
 
 public interface IUnitOfWork
 {

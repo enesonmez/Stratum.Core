@@ -1,5 +1,6 @@
 using System.Text;
 using System.Linq.Dynamic.Core;
+using Core.Persistence.Abstractions.Dynamic;
 
 namespace Core.Persistence.Dynamic;
 

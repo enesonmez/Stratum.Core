@@ -1,4 +1,4 @@
-namespace Core.Persistence.Dynamic;
+namespace Core.Persistence.Abstractions.Dynamic;
 
 public class Filter(string field, string @operator)
 {

@@ -1,10 +1,10 @@
-using Core.Persistence.Repositories;
+using Core.Persistence.Abstractions.Repositories;
 
 namespace Core.Security.Entities;
 
 public class OperationClaim<TId> : Entity<TId>
 {
-    public string Name { get; set; }
+    public string Name { get; protected set; }
 
     public OperationClaim()
     {

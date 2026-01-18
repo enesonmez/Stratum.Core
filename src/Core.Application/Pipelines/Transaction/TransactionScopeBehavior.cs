@@ -1,5 +1,5 @@
 using System.Transactions;
-using Core.Persistence.UnitOfWork;
+using Core.Persistence.Abstractions.UnitOfWork;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 

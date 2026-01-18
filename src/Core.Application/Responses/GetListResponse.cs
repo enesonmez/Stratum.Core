@@ -1,4 +1,4 @@
-using Core.Persistence.Paging;
+using Core.Persistence.Abstractions.Paging;
 
 namespace Core.Application.Responses;
 

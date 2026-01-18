@@ -1,4 +1,4 @@
-namespace Core.Persistence.Dynamic;
+namespace Core.Persistence.Abstractions.Dynamic;
 
 public class Sort(string field, string dir)
 {

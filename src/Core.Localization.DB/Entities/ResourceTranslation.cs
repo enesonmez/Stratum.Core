@@ -1,4 +1,4 @@
-using Core.Persistence.Repositories;
+using Core.Persistence.Abstractions.Repositories;
 
 namespace Core.Localization.DB.Entities;
 

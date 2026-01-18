@@ -1,4 +1,4 @@
-namespace Core.Persistence.Paging;
+namespace Core.Persistence.Abstractions.Paging;
 
 public interface IPaginate<T>
 {

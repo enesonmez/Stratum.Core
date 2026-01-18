@@ -1,14 +1,14 @@
-using Core.Persistence.Repositories;
+using Core.Persistence.Abstractions.Repositories;
 using Core.Security.Enums;
 
 namespace Core.Security.Entities;
 
 public class User<TId> : Entity<TId>
 {
-    public string Email { get; set; }      
-    public byte[] PasswordSalt { get; set; }      
-    public byte[] PasswordHash { get; set; }      
-    public AuthenticatorType AuthenticatorType { get; set; } 
+    public string Email { get; protected set; }      
+    public byte[] PasswordSalt { get; protected set; }      
+    public byte[] PasswordHash { get; protected set; }      
+    public AuthenticatorType AuthenticatorType { get; protected set; } 
     
     public User()
     {

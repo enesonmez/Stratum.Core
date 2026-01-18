@@ -4,6 +4,7 @@ using Core.CrossCuttingConcerns.Exception.WebApi.Handlers;
 using Core.CrossCuttingConcerns.Logging;
 using Core.CrossCuttingConcerns.Logging.Abstraction;
 using Core.CrossCuttingConcerns.Logging.Enums;
+using Core.Localization.Abstraction;
 using Microsoft.AspNetCore.Http;
 
 namespace Core.CrossCuttingConcerns.Exception.WebApi.Middleware;
@@ -14,13 +15,13 @@ public class ExceptionMiddleware
     private readonly HttpExceptionHandler _httpExceptionHandler;
     private readonly RequestDelegate _next;
     private readonly ILogger _loggerService;
-    
-    public ExceptionMiddleware(RequestDelegate next, IHttpContextAccessor contextAccessor, ILogger loggerService)
+
+    public ExceptionMiddleware(RequestDelegate next, IHttpContextAccessor contextAccessor, ILogger loggerService, ILocalizationService localizationService)
     {
         _next = next;
         _contextAccessor = contextAccessor;
         _loggerService = loggerService;
-        _httpExceptionHandler = new HttpExceptionHandler();
+        _httpExceptionHandler = new HttpExceptionHandler(localizationService);
     }
     
     public async Task Invoke(HttpContext context)
