@@ -3,7 +3,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using Core.Security.Encryption;
-using Core.Security.Entities;
+using Core.Security.Abstractions.Entities;
+using Core.Security.Abstractions.Jwt;
 using Core.Security.Extensions;
 using Microsoft.IdentityModel.Tokens;
 
@@ -61,7 +62,7 @@ public class JwtHelper<TUserId, TOperationClaimId, TRefreshTokenId> :
             tokenOptions.Issuer,
             tokenOptions.Audience,
             expires: accessTokenExpiration,
-            notBefore: DateTime.Now,
+            notBefore: DateTime.UtcNow,
             claims: SetClaims(user, operationClaims),
             signingCredentials: signingCredentials
         );

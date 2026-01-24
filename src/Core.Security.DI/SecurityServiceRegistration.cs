@@ -1,4 +1,7 @@
-﻿using Core.Security.Jwt;
+﻿using Core.Security.Abstractions.Hashing;
+using Core.Security.Abstractions.Jwt;
+using Core.Security.Hashing;
+using Core.Security.Jwt;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Core.Security.DI;
@@ -14,7 +17,9 @@ public static class SecurityServiceRegistration
             ITokenHelper<TUserId, TOperationClaimId, TRefreshTokenId>,
             JwtHelper<TUserId, TOperationClaimId, TRefreshTokenId>
         >(_ => new JwtHelper<TUserId, TOperationClaimId, TRefreshTokenId>(tokenOptions));
-
+        
+        services.AddScoped<IHashingService, HashingService>();
+        
         return services;
     }
 }

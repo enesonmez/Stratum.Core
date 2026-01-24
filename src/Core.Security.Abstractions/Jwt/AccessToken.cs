@@ -1,4 +1,4 @@
-namespace Core.Security.Jwt;
+namespace Core.Security.Abstractions.Jwt;
 
 public class AccessToken
 {

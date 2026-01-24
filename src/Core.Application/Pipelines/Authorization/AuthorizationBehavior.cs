@@ -1,5 +1,5 @@
 using Core.CrossCuttingConcerns.Exception.Types;
-using Core.Security.Constants;
+using Core.Security.Abstractions.Constants;
 using Core.Security.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Http;

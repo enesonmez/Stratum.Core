@@ -1,6 +1,6 @@
 using Core.Persistence.Abstractions.Repositories;
 
-namespace Core.Security.Entities;
+namespace Core.Security.Abstractions.Entities;
 
 public class RefreshToken<TId, TUserId> : Entity<TId>
 {
@@ -12,6 +12,10 @@ public class RefreshToken<TId, TUserId> : Entity<TId>
     public string? RevokedByIp { get; set; }
     public string? ReplacedByToken { get; set; }
     public string? ReasonRevoked { get; set; }
+    
+    public bool IsExpired => DateTime.UtcNow >= ExpirationDate;
+    public bool IsRevoked => RevokedDate != null;
+    public bool IsActive => !IsRevoked && !IsExpired;
 
     public RefreshToken()
     {

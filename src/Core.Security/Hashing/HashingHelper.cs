@@ -1,5 +1,5 @@
 using System.Security.Cryptography;
-using System.Text;
+using Core.Security.Abstractions.Hashing;
 
 namespace Core.Security.Hashing;
 

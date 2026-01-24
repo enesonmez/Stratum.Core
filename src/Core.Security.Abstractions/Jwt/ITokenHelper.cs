@@ -1,6 +1,6 @@
-using Core.Security.Entities;
+using Core.Security.Abstractions.Entities;
 
-namespace Core.Security.Jwt;
+namespace Core.Security.Abstractions.Jwt;
 
 public interface ITokenHelper<TUserId, TOperationClaimId, TRefreshTokenId>
 {

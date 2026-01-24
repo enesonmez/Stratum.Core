@@ -1,7 +1,7 @@
 using Core.Persistence.Abstractions.Repositories;
-using Core.Security.Enums;
+using Core.Security.Abstractions.Enums;
 
-namespace Core.Security.Entities;
+namespace Core.Security.Abstractions.Entities;
 
 public class User<TId> : Entity<TId>
 {

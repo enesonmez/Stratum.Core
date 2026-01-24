@@ -1,4 +1,4 @@
-namespace Core.Security.Constants;
+namespace Core.Security.Abstractions.Constants;
 
 public static class GeneralOperationClaims
 {

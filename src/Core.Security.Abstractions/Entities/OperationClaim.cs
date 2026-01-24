@@ -1,6 +1,6 @@
 using Core.Persistence.Abstractions.Repositories;
 
-namespace Core.Security.Entities;
+namespace Core.Security.Abstractions.Entities;
 
 public class OperationClaim<TId> : Entity<TId>
 {

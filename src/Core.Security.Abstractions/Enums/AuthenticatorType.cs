@@ -1,4 +1,4 @@
-namespace Core.Security.Enums;
+namespace Core.Security.Abstractions.Enums;
 
 public enum AuthenticatorType
 {
